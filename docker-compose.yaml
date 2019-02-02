@@ -1,0 +1,14 @@
+version: "3"
+services:
+  matchbox:
+    image: quay.io/coreos/matchbox
+    container_name: "matchbox"
+    network_mode: "host"
+    volumes:
+      - /var/lib/matchbox:/var/lib/matchbox:Z
+      - /etc/matchbox:/etc/matchbox:Z,ro
+    entrypoint:
+      - /matchbox
+      - -address=0.0.0.0:8080
+      - -rpc-address=0.0.0.0:8081
+      - -log-level=debug
